@@ -29,6 +29,11 @@ func AttemptChallenge(ctx context.Context, challengeText string, command string)
 	return string(b), nil
 }
 
+// Score calculates the score of a command.
+func Score(cmd string) int {
+	return len(strings.Replace(cmd, "<Esc>", "_", -1))
+}
+
 func tempFileWithContents(dir, prefix string, b []byte) (*os.File, error) {
 	tf, err := ioutil.TempFile(dir, prefix)
 	if err != nil {

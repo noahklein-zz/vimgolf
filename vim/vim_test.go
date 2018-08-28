@@ -109,3 +109,22 @@ func TestLexCommands(t *testing.T) {
 		}
 	}
 }
+
+func TestScore(t *testing.T) {
+	cases := []struct {
+		desc  string
+		input string
+		want  int
+	}{
+		{desc: "simple", input: "12345", want: 5},
+		{desc: "one <Esc>", input: "12<Esc>45", want: 5},
+		{desc: "multiple <Esc>", input: "1<Esc><Esc>4<Esc>", want: 5},
+	}
+	for _, c := range cases {
+		t.Run(c.desc, func(t *testing.T) {
+			if got := Score(c.input); got != c.want {
+				t.Errorf("Score() = %v, want %v", got, c.want)
+			}
+		})
+	}
+}

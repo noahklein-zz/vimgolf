@@ -1,0 +1,23 @@
+body {
+  margin: 0 auto;
+  max-width: 56em;
+  padding: 1em 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 150px auto auto;
+  grid-template-rows: 2rem 500px 2rem;
+  grid-gap: 1em;
+}
+
+header,
+footer {
+  grid-column: 1 / 4;
+}
+
+.grid > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
